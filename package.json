@@ -1,6 +1,6 @@
 {
   "name": "inferno-outside-click-handler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Inferno outside click handler component",
   "main": "index.js",
   "repository": {

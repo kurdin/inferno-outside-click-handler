@@ -30,7 +30,7 @@ import  OutsideClickHandler from 'inferno-outside-click-handler';
 
 function handleClickOutside() {
     // set state to close drop down
-    setState({ dropDown: closed });
+    setState({ dropDownClose: true });
     // or call function to close it
     DropDownClose();
 }

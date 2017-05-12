@@ -1,74 +1,42 @@
-# Inferno animations with animate.css
+# Inferno outside click handler component
 
-<img src="https://cloud.githubusercontent.com/assets/6027060/25237321/4f1a39fa-25b8-11e7-8269-1743f8b8552e.gif"/>
+If many cases when working with UI elements on the page, you need to handle outside click on your component to make sure you can set correct focus or close elements dropdown, etc.
 
-#### [Online Demo](https://kurdin.github.io/inferno-animate-css)
+This wrapper component takes care of clicking outside of childs and will trigger function passed to it as prop.
+
 
 ## Installation
 
 Using [npm](https://www.npmjs.com/):
 
-    $ npm install --save inferno-animate-css
-    $ npm install --save animate.css
+    $ npm install --save inferno-outside-click-handler
 
-## Run Demo
+## Options
 
-    $ git clone https://github.com/kurdin/inferno-animate-css
-    $ cd inferno-animate.css
-    $ npm install 
-    $ npm run demo
 
-Open browser in http://localhost:8080
-
-## Notes
-
-You need to install and require animate.css yourself.
-
-This way you may have a small css build, importing just the animations you need.
-
-Or you can create your own animations, use another library... This is a very small package, you should take a look at source.
+``<OutsideClickHandler
+component="div" // can be any HTML element used as wrapper (default: 'div')
+onOutsideClick={ handleClickOutside } // pass function to trigger then outside click detected.
+ignoreClass: 'ignore-onclickoutside' // pass className that ignore triggering outside function.
+</OutsideClickHandler>``
 
 
 ## Usage
 
 ```js
-import Animate from 'inferno-animate-css'
+import  OutsideClickHandler from 'inferno-outside-click-handler';
 
-import 'animate.css/animate.css'  // you need to require the css somewhere
+function handleClickOutside() {
+    // set state to close drop down
+    setState({ dropDown: closed });
+    // or call function to close it
+    DropDownClose();
+}
 
-// animate list, dont forget to add unique key to each item, don't use array index!!!
-<Animate
-    enter="bounceIn" // on Enter animation
-    leave="bounceOut" // on Leave animation
-    appear="fadeInRight" // on element Appear animation (onMount)
-    change="flipInX" // on element Change animation (onUpdate)
-    durationAppear={1000}
-    durationEnter={1000}
-    durationLeave={1000}
-    durationChange={1000}
-    animate={true|false|expression} // turn off/on animation, true by default
-    animateChangeIf={true|false|expression} // turn off/on Change only animation, true by default
-    component="ul">
-
-    {this.state.items.map(item => <li key={item.id}>{item.name}</li>)}
-
-</Animate>
-// or animate single element / component
-
-<Animate
-    appear="fadeInDown"
-    durationAppear={1000}
-    component="div" >
-
-  <h1>inferno animate.css</h1>
-
-</Animate>
+...
+<OutsideClickHandler component="div" onOutsideClick={ handleClickOutside }>          
+    <DropDownTrigger/>
+    <DropDownMenu/>
+</OutsideClickHandler>
+...
 ```
-
-based on https://github.com/thiagoc7/react-animate.css
-
-## inferno alternative velocity js animations
-
-Here is another good but more complex (but flexible) alternative to create animations for inferno js components. If you want create custom animations with more control and a lot of options, you can try velocity js based animations:
-
-https://github.com/kurdin/velocity-inferno

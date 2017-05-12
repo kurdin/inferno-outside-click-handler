@@ -37,7 +37,6 @@ function handleClickOutside() {
 
 ...
 <OutsideClickHandler component="div" onOutsideClick={ handleClickOutside }>          
-    <DropDownTrigger/>
     <DropDownMenu/>
 </OutsideClickHandler>
 ...

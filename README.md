@@ -14,11 +14,13 @@ Using [npm](https://www.npmjs.com/):
 ## Options
 
 
-``<OutsideClickHandler
+```js 
+<OutsideClickHandler
 component="div" // can be any HTML element used as wrapper (default: 'div')
 onOutsideClick={ handleClickOutside } // pass function to trigger then outside click detected.
 ignoreClass: 'ignore-onclickoutside' // pass className that ignore triggering outside function.
-</OutsideClickHandler>``
+</OutsideClickHandler>
+```
 
 
 ## Usage
